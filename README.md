@@ -19,27 +19,6 @@ The following pages are available:
 -   Login (`/login`) - _Entering details will trigger a debug alert._
 -   Register (`/register`) - _Entering details will trigger a debug alert._
 
-## Setup and Run
-
-To set up and run the project locally, follow these steps:
-
-1.  **Navigate to the project directory:**
-    ```bash
-    cd AIterminal/UNI_PROJECT/dr-online-app
-    ```
-
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-
-3.  **Start the development server:**
-    ```bash
-    npm start
-    ```
-
-    This will open the application in your browser, usually at `http://localhost:3000`.
-
 ## Demo Features
 
 -   **Login Page (`/login`):** Enter any email and password. Upon clicking "Login", an alert will pop up displaying the entered credentials.
