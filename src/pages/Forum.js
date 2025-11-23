@@ -1,10 +1,7 @@
 import { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { mockForumTopics } from '../data/mockData';
 
 export default function Forum() {
-  const { user } = useAuth();
-  const [topics, setTopics] = useState(mockForumTopics);
+  const [topics, setTopics] = useState([]); // Initialized with empty array
   const [newTopic, setNewTopic] = useState('');
 
   const handleNewTopicChange = (e) => {
@@ -18,8 +15,8 @@ export default function Forum() {
     const topic = {
       id: topics.length + 1,
       title: newTopic,
-      author: user.email,
-      role: user.role,
+      author: 'Demo User',
+      role: 'patient',
       date: new Date().toISOString().split('T')[0],
       replies: 0,
     };
@@ -31,14 +28,11 @@ export default function Forum() {
     <div>
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h1>Discussion Forum</h1>
-        {user && (
-          <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#new-topic-form" aria-expanded="false" aria-controls="new-topic-form">
+        <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#new-topic-form" aria-expanded="false" aria-controls="new-topic-form">
             Start a New Discussion
           </button>
-        )}
       </div>
       
-      {user && (
         <div className="collapse mb-4" id="new-topic-form">
           <div className="card card-body">
             <form onSubmit={handleNewTopicSubmit}>
@@ -61,21 +55,32 @@ export default function Forum() {
       )}
 
       <ul className="list-group">
-        {topics.map(topic => (
-          <li key={topic.id} className="list-group-item list-group-item-action">
-            <div className="d-flex w-100 justify-content-between">
-              <h5 className="mb-1">{topic.title}</h5>
-              <small>Replies: {topic.replies}</small>
-            </div>
-            <p className="mb-1">
-              <small>
-                By: {topic.author} 
-                <span className={`badge ms-2 ${topic.role === 'doctor' ? 'bg-primary' : 'bg-secondary'}`}>{topic.role}</span>
-              </small>
-            </p>
-            <small>Date: {topic.date}</small>
-          </li>
-        ))}
+        <li key={1} className="list-group-item list-group-item-action">
+          <div className="d-flex w-100 justify-content-between">
+            <h5 className="mb-1">General questions about the flu vaccine</h5>
+            <small>Replies: 5</small>
+          </div>
+          <p className="mb-1">
+            <small>
+              By: Jane Smith 
+              <span className="badge ms-2 bg-secondary">patient</span>
+            </small>
+          </p>
+          <small>Date: 2025-11-19</small>
+        </li>
+        <li key={2} className="list-group-item list-group-item-action">
+          <div className="d-flex w-100 justify-content-between">
+            <h5 className="mb-1">Tips for managing anxiety and stress</h5>
+            <small>Replies: 12</small>
+          </div>
+          <p className="mb-1">
+            <small>
+              By: Dr. Davis 
+              <span className="badge ms-2 bg-primary">doctor</span>
+            </small>
+          </p>
+          <small>Date: 2025-11-15</small>
+        </li>
       </ul>
     </div>
   );

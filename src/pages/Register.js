@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -8,7 +7,6 @@ export default function Register() {
     password: '',
     role: 'patient', // default role
   });
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,10 +18,13 @@ export default function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Registering user:', formData);
-    alert(`Registration successful as a ${formData.role}! (This is a demo)`);
-    // Redirect to login page after registration
-    navigate('/login');
+    alert(`Demo Registration - Name: ${formData.name}, Email: ${formData.email}, Role: ${formData.role}`);
+    setFormData({
+      name: '',
+      email: '',
+      password: '',
+      role: 'patient',
+    });
   };
 
   return (
