@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <div>
-      <h1>About Dr. Online</h1>
+      <h1>About Dr's. Online</h1>
       <p className="lead">Dr. Online is a modern web application designed to bridge the communication gap between doctors and their patients.</p>
 
       <div className="accordion mt-4" id="accordionExample">
